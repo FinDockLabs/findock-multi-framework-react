@@ -6,6 +6,8 @@ A public, guest-accessible donation page built as a **React UI bundle (Salesforc
 
 Live example (lab org): `https://<my-domain>.my.site.com/donate/`
 
+![The donation page: hero with headline and illustration on the left, three-step donation form card on the right with a Give once / Give monthly toggle, preset amounts with impact hints, a custom amount field and a Continue with €25 button](docs/images/donation-page-desktop.png)
+
 ```
 ┌──────────────────────────────┐   platform SDK fetch (guest session)   ┌───────────────────────────────┐
 │ React UI bundle  DonatePortal│ ─────────────────────────────────────▶ │ DonationPaymentResource       │
