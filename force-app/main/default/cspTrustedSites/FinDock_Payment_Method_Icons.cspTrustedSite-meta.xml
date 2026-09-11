@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CspTrustedSite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FinDock_Payment_Method_Icons</fullName>
+    <description>Allow access to FinDock payment method logos (image.svg from /PaymentMethods)</description>
+    <endpointUrl>https://external.findock.com</endpointUrl>
+    <isActive>true</isActive>
+    <context>All</context>
+    <isApplicableToConnectSrc>true</isApplicableToConnectSrc>
+    <isApplicableToFontSrc>false</isApplicableToFontSrc>
+    <isApplicableToFrameSrc>false</isApplicableToFrameSrc>
+    <isApplicableToImgSrc>true</isApplicableToImgSrc>
+    <isApplicableToMediaSrc>false</isApplicableToMediaSrc>
+    <isApplicableToStyleSrc>false</isApplicableToStyleSrc>
+</CspTrustedSite>

@@ -1,0 +1,301 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/fraunces/opsz.css';
+@import '@fontsource-variable/instrument-sans';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Tidewell donation page theme.
+ * Editorial, warm and calm: paper background, deep river-green ink, one clay accent.
+ * Every colour pairing below meets WCAG 2.2 AA (text ≥ 4.5:1, borders/controls ≥ 3:1).
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-moss: var(--moss);
+  --color-moss-deep: var(--moss-deep);
+  --color-clay: var(--clay);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-success: var(--success);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Instrument Sans Variable', 'Helvetica Neue', Arial, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+  --paper: #f6f1e7;
+  --paper-deep: #ebe3d3;
+  --ink: #12302c;
+  --moss: #1d6b57;
+  --moss-deep: #154f41;
+  --clay: #b93f22;
+  --success: #1d6b57;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #fffdf9;
+  --card-foreground: var(--ink);
+  --popover: #fffdf9;
+  --popover-foreground: var(--ink);
+  --primary: var(--moss);
+  --primary-foreground: #ffffff;
+  --secondary: var(--paper-deep);
+  --secondary-foreground: var(--ink);
+  --muted: #efe8db;
+  --muted-foreground: #4b5a55; /* 6.9:1 on paper */
+  --accent: var(--clay);
+  --accent-foreground: #ffffff;
+  --destructive: #a12a19; /* 7.2:1 on paper */
+  --destructive-foreground: #ffffff;
+  --border: #7d8883; /* 3.3:1 on paper, 3.6:1 on card */
+  --input: #7d8883;
+  --ring: var(--moss);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-padding-bottom: 6rem;
+  }
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.55;
+    background-image:
+      radial-gradient(60rem 30rem at 110% -10%, rgba(29, 107, 87, 0.12), transparent 60%),
+      radial-gradient(40rem 24rem at -10% 110%, rgba(185, 63, 34, 0.08), transparent 60%);
+    background-attachment: fixed;
+  }
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    font-variation-settings:
+      'opsz' 144,
+      'SOFT' 40,
+      'WONK' 1;
+    letter-spacing: -0.01em;
+    line-height: 1.08;
+  }
+  :focus-visible {
+    outline: 3px solid var(--moss);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Visually hidden but focusable radio inputs (WCAG 2.1.1): never display:none */
+  .choice-input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    pointer-events: none;
+  }
+  .choice {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    padding: 0.75rem 0.9rem;
+    cursor: pointer;
+    transition:
+      border-color 150ms ease,
+      background-color 150ms ease,
+      box-shadow 150ms ease;
+  }
+  .choice:hover {
+    border-color: var(--moss);
+  }
+  .choice:has(.choice-input:checked) {
+    border-color: var(--moss);
+    border-width: 2px;
+    background: #eef5f1;
+    box-shadow: inset 0 0 0 1px var(--moss);
+  }
+  .choice:has(.choice-input:focus-visible) {
+    outline: 3px solid var(--moss);
+    outline-offset: 2px;
+  }
+  .choice-dot {
+    flex: 0 0 auto;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 999px;
+    border: 2px solid var(--border);
+    background: #fff;
+    display: grid;
+    place-items: center;
+  }
+  .choice:has(.choice-input:checked) .choice-dot {
+    border-color: var(--moss);
+  }
+  .choice:has(.choice-input:checked) .choice-dot::after {
+    content: '';
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 999px;
+    background: var(--moss);
+  }
+  .amount-tile {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.15rem;
+    min-height: 4.5rem;
+  }
+  .amount-tile:has(.choice-input:checked) {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+    box-shadow: none;
+  }
+  .amount-tile:has(.choice-input:checked) .amount-hint {
+    color: #d7e3de;
+  }
+  .amount-hint {
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    line-height: 1.3;
+  }
+  .field-input {
+    width: 100%;
+    min-height: 3rem;
+    font-size: 1rem;
+    padding: 0.7rem 0.9rem;
+    border: 1.5px solid var(--input);
+    border-radius: var(--radius-md);
+    background: var(--card);
+    color: var(--ink);
+  }
+  .field-input::placeholder {
+    color: #6b7772;
+  }
+  .field-input[aria-invalid='true'] {
+    border-color: var(--destructive);
+    border-width: 2px;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3.25rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    background: var(--moss);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    transition:
+      background-color 150ms ease,
+      transform 150ms ease;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--moss-deep);
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 3rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 999px;
+    color: var(--ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 150ms ease;
+  }
+  .btn-ghost:hover {
+    text-decoration-color: var(--ink);
+  }
+  .reveal {
+    animation: reveal 520ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .ripple-bg {
+    background-image:
+      repeating-radial-gradient(
+        circle at 30% 40%,
+        rgba(29, 107, 87, 0.08) 0,
+        rgba(29, 107, 87, 0.08) 1px,
+        transparent 1px,
+        transparent 22px
+      );
+  }
+}

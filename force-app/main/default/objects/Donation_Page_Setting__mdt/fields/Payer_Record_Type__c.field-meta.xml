@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payer_Record_Type__c</fullName>
+    <label>Payer Record Type</label>
+    <description>Person Account record type developer name for the payer (e.g. PersonAccount). Leave blank to create the payer as a Contact instead.</description>
+    <inlineHelpText>Person Account record type developer name for the payer (e.g. PersonAccount). Leave blank to create the payer as a Contact instead.</inlineHelpText>
+    <required>false</required>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <type>Text</type>
+    <length>80</length>
+    <unique>false</unique>
+</CustomField>

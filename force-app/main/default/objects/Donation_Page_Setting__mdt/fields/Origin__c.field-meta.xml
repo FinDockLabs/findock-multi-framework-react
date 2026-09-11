@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Origin__c</fullName>
+    <label>Origin</label>
+    <description>Value written to the FinDock Origin field so gifts from this page are recognisable in reports.</description>
+    <inlineHelpText>Value written to the FinDock Origin field so gifts from this page are recognisable in reports.</inlineHelpText>
+    <required>false</required>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <type>Text</type>
+    <length>80</length>
+    <unique>false</unique>
+</CustomField>

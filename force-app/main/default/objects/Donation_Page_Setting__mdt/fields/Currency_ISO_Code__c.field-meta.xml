@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Currency_ISO_Code__c</fullName>
+    <label>Currency ISO Code</label>
+    <description>ISO 4217 currency for all donations (e.g. EUR). Sent explicitly so the org default currency is never assumed.</description>
+    <inlineHelpText>ISO 4217 currency for all donations (e.g. EUR). Sent explicitly so the org default currency is never assumed.</inlineHelpText>
+    <required>false</required>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <type>Text</type>
+    <length>3</length>
+    <unique>false</unique>
+</CustomField>

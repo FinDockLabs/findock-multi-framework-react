@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recurring_Presets__c</fullName>
+    <label>Recurring Presets</label>
+    <description>Comma-separated preset amounts for monthly gifts, optional impact hint after a pipe.</description>
+    <inlineHelpText>Comma-separated preset amounts for monthly gifts, optional impact hint after a pipe.</inlineHelpText>
+    <required>false</required>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <type>Text</type>
+    <length>255</length>
+    <unique>false</unique>
+</CustomField>

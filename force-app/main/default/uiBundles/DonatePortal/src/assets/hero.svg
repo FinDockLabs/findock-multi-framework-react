@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="t">
+  <title id="t">Hand pump beside a river</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#efe6d3"/>
+      <stop offset="1" stop-color="#e2d6bd"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b7d68"/>
+      <stop offset="1" stop-color="#12302c"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="640" fill="url(#sky)"/>
+  <circle cx="760" cy="150" r="70" fill="#b93f22" opacity=".85"/>
+  <path d="M0 330 C180 300 300 360 480 330 S780 300 960 340 L960 640 L0 640Z" fill="#c9b990"/>
+  <path d="M0 400 C200 370 320 430 520 400 S800 370 960 410 L960 640 L0 640Z" fill="url(#water)"/>
+  <g stroke="#f6f1e7" stroke-width="3" fill="none" opacity=".55" stroke-linecap="round">
+    <path d="M120 470 c40-16 80-16 120 0 s80 16 120 0"/>
+    <path d="M90 520 c50-20 100-20 150 0 s100 20 150 0"/>
+    <path d="M560 500 c40-16 80-16 120 0 s80 16 120 0"/>
+    <path d="M520 560 c50-20 100-20 150 0 s100 20 150 0"/>
+  </g>
+  <g>
+    <rect x="360" y="230" width="34" height="200" rx="8" fill="#12302c"/>
+    <rect x="300" y="250" width="150" height="26" rx="13" fill="#12302c"/>
+    <rect x="410" y="205" width="16" height="90" rx="8" fill="#b93f22" transform="rotate(-22 418 250)"/>
+    <rect x="330" y="420" width="94" height="24" rx="12" fill="#0d221f"/>
+    <path d="M394 300 h30 v30 h-30z" fill="#12302c"/>
+    <path d="M424 330 c0 40 -10 70 -22 90" stroke="#7fb3a4" stroke-width="8" fill="none" stroke-linecap="round"/>
+  </g>
+  <g fill="#12302c">
+    <ellipse cx="200" cy="330" rx="90" ry="14" opacity=".15"/>
+    <path d="M150 330 c0-70 30-110 50-110 s50 40 50 110z" opacity=".9"/>
+    <path d="M760 340 c0-60 26-96 44-96 s44 36 44 96z" opacity=".9"/>
+  </g>
+</svg>

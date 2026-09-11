@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Organisation_Name__c</fullName>
+    <label>Organisation Name</label>
+    <description>Name of the charity shown in the page header and receipts copy.</description>
+    <inlineHelpText>Name of the charity shown in the page header and receipts copy.</inlineHelpText>
+    <required>false</required>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <type>Text</type>
+    <length>80</length>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recurring_Methods__c</fullName>
+    <label>Recurring Payment Methods</label>
+    <description>Comma-separated FinDock payment method names offered for monthly gifts (e.g. SEPA Direct Debit,CreditCard). Only method/processor combinations that support recurring are shown.</description>
+    <inlineHelpText>Comma-separated FinDock payment method names offered for monthly gifts (e.g. SEPA Direct Debit,CreditCard). Only method/processor combinations that support recurring are shown.</inlineHelpText>
+    <required>false</required>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <type>Text</type>
+    <length>255</length>
+    <unique>false</unique>
+</CustomField>

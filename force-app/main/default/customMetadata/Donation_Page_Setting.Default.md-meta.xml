@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Default</label>
+    <protected>false</protected>
+    <values><field>Organisation_Name__c</field><value xsi:type="xsd:string">Tidewell Foundation</value></values>
+    <values><field>Currency_ISO_Code__c</field><value xsi:type="xsd:string">EUR</value></values>
+    <values><field>Payment_Processor__c</field><value xsi:type="xsd:string">PaymentHub-Stripe</value></values>
+    <values><field>Source_Connector__c</field><value xsi:nil="true"/></values>
+    <values><field>Payer_Record_Type__c</field><value xsi:type="xsd:string">PersonAccount</value></values>
+    <values><field>One_Time_Methods__c</field><value xsi:type="xsd:string">Ideal,CreditCard,SEPA Direct Debit</value></values>
+    <values><field>Recurring_Methods__c</field><value xsi:type="xsd:string">SEPA Direct Debit,CreditCard</value></values>
+    <values><field>One_Time_Presets__c</field><value xsi:type="xsd:string">10|Safe water for a family for a week,25|A rain filter for one household,50|A school hand-washing station,100|Repairs a village well pump</value></values>
+    <values><field>Recurring_Presets__c</field><value xsi:type="xsd:string">5|Clean water for one child all year,10|Filters for two families every month,20|Keeps a community well maintained</value></values>
+    <values><field>Min_Amount__c</field><value xsi:type="xsd:double">1</value></values>
+    <values><field>Max_Amount__c</field><value xsi:type="xsd:double">5000</value></values>
+    <values><field>Default_Campaign_Id__c</field><value xsi:nil="true"/></values>
+    <values><field>Origin__c</field><value xsi:type="xsd:string">Tidewell donation page (React UI bundle)</value></values>
+    <values><field>Support_Email__c</field><value xsi:type="xsd:string">hello@tidewell.example</value></values>
+    <values><field>Allowed_Return_Hosts__c</field><value xsi:nil="true"/></values>
+</CustomMetadata>

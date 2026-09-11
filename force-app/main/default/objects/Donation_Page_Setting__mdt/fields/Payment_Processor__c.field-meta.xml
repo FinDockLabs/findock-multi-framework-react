@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Processor__c</fullName>
+    <label>Payment Processor</label>
+    <description>Optional FinDock processor name to force (e.g. PaymentHub-Stripe). Leave blank to use the processor FinDock marks as default for each method.</description>
+    <inlineHelpText>Optional FinDock processor name to force (e.g. PaymentHub-Stripe). Leave blank to use the processor FinDock marks as default for each method.</inlineHelpText>
+    <required>false</required>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <type>Text</type>
+    <length>80</length>
+    <unique>false</unique>
+</CustomField>

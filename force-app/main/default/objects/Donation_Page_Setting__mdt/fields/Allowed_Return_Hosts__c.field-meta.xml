@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allowed_Return_Hosts__c</fullName>
+    <label>Allowed Return Hosts</label>
+    <description>Optional comma-separated extra hostnames the success/failure return URLs may point to. The site host and the org domain are always allowed.</description>
+    <inlineHelpText>Optional comma-separated extra hostnames the success/failure return URLs may point to. The site host and the org domain are always allowed.</inlineHelpText>
+    <required>false</required>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <type>Text</type>
+    <length>255</length>
+    <unique>false</unique>
+</CustomField>

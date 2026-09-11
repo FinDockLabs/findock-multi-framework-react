@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source_Connector__c</fullName>
+    <label>Source Connector</label>
+    <description>Optional FinDock source connector (e.g. FinDock-for-Fundraising). Leave blank to use the org default.</description>
+    <inlineHelpText>Optional FinDock source connector (e.g. FinDock-for-Fundraising). Leave blank to use the org default.</inlineHelpText>
+    <required>false</required>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <type>Text</type>
+    <length>80</length>
+    <unique>false</unique>
+</CustomField>
