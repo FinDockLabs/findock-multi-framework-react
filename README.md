@@ -61,9 +61,20 @@ Live example (lab org): `https://<my-domain>.my.site.com/donate/`
 ## Prerequisites (public site)
 
 1. FinDock (`cpm`) installed with at least one processor and method active (this org: Stripe).
-2. **FinDock ProcessingHub installed and connected**, its integration user holding the
-   *FinDock Integration User* permission set group. Guest payments hand async processing to that user.
+2. **FinDock ProcessingHub installed and connected** (FinDock Setup), its integration user holding the
+   *FinDock Integration User* permission set group. When a guest creates a PaymentIntent, FinDock queues a
+   `cpm.GuidedMatchingJob.UserSwitcher` message and hands processing to that user through the hub. Without a
+   connected hub the donor still reaches the PSP, but the message stays `Scheduled` and no Installment or
+   Gift Transaction is ever created. (In this lab org the hand-off is not completing: today's test intents
+   are all `Scheduled`, so verify the connection in FinDock Setup → Connect → ProcessingHub.)
 3. Multi-Framework (React) enabled and Digital Experiences enabled in the org.
+
+### Guest user permissions
+
+Per the FinDock docs the site guest user needs the **FinDock Payer** permission set group (`cpm__FinDock_Payer`),
+which FinDock maintains itself (it contains *FinDock Core Experience Cloud Run* and *FinDock Experience Cloud*
+and receives package-specific sets as processors are activated), plus this repo's `Donation_Public_Access` set
+for the Apex REST wrapper. Do not assign individual FinDock permission sets directly.
 
 ## Deploy
 
@@ -83,8 +94,10 @@ sf project deploy start -o <alias> -d force-app/main/default/uiBundles
 sf project deploy start -o <alias> -d force-app/main/default/networks -d force-app/main/default/sites \
   -d force-app/main/default/digitalExperienceConfigs -d force-app/main/default/digitalExperiences
 
-# 4. Guest user permissions (guest username: see Site.GuestUserId for the "Donate" site)
-sf org assign permset -o <alias> -n Donation_Public_Access -n proh__FinDock_Experience_Cloud -b <guest username>
+# 4. Guest user permissions (guest user: Site.GuestUserId of the "Donate" site)
+sf org assign permset -o <alias> -n Donation_Public_Access -b <guest username>
+# FinDock Payer permission set group (the CLI has no permsetgroup command; create the assignment record):
+sf data create record -o <alias> -s PermissionSetAssignment -v "AssigneeId=<guest user Id> PermissionSetGroupId=<Id of PermissionSetGroup FinDock_Payer>"
 ```
 
 The page is then served at `https://<my-domain>.my.site.com/donate/`.

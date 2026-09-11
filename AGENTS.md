@@ -48,8 +48,18 @@ Architecture, file map and design decisions: see `README.md`. Read it before cha
   `cpm.API_PaymentIntent_V2.postPaymentIntent()` and `cpm.API_PaymentMethod_V2.getPaymentMethods()`.
   `postPaymentIntent(String)` does **not** compile. Swap `RestContext.request/response`, call, read
   `RestContext.response`, restore the originals in `finally` (`FinDockRestContextGateway`).
-- Guest user needs exactly two permission sets: `Donation_Public_Access` (repo) and
-  `proh__FinDock_Experience_Cloud`. No processor permission set was needed for Stripe iDEAL/card/SEPA.
+- Guest user permissions, per the FinDock docs: the **FinDock Payer** permission set group
+  (`cpm__FinDock_Payer`, maintained by FinDock: Core Experience Cloud Run + FinDock Experience Cloud + processor
+  sets) plus `Donation_Public_Access` (repo) for the REST entry point. Never assign individual FinDock sets
+  directly. `sf org assign permsetgroup` does not exist in this CLI; insert a `PermissionSetAssignment` with
+  `PermissionSetGroupId` via `sf data create record`.
+- **The ProcessingHub hand-off is not completing in this org.** Every guest PaymentIntent leaves a
+  `cpm__Message__c` with handler `cpm.GuidedMatchingJob.UserSwitcher` in `Scheduled` (start time set, no end
+  time) and nothing downstream (Inbound Report, Installment, Gift Transaction) is created. The hub was
+  connected before (June messages finished under the integration user), so the connection has probably lapsed;
+  the connection setting is a protected custom setting and not visible via SOQL. Re-connect in FinDock Setup →
+  Connect → ProcessingHub. This is org setup, not something to fix in this repo. Check message status after
+  any live test; a redirect alone does not prove processing.
 - This org has **no default processor** per method, so the resolved processor is always sent explicitly.
 - FinDock for Fundraising (NPC) payers are Person Accounts: `Payer.Account.RecordTypeName = PersonAccount`,
   email as `PersonEmail`. Recurring maps to Gift Commitment + Schedule; `Frequency` values Daily/Weekly/Monthly/Yearly.
@@ -88,8 +98,8 @@ Discover these for another org with `sf data query` on `cpm__Payment_Method__c` 
 4. Set `<target>Experience</target>` in `DonatePortal.uibundle-meta.xml`; deploy `uiBundles/` (dist must exist).
 5. Site metadata (`networks/Donate`, `sites/Donate`, `digitalExperienceConfigs/Donate1`,
    `digitalExperiences/site/Donate1`) with `appSpace: "c__DonatePortal"`; deploy after the bundle.
-6. Find the guest user (`Site.GuestUserId` for MasterLabel `Donate`) and
-   `sf org assign permset -n Donation_Public_Access -n proh__FinDock_Experience_Cloud -b <guest>`.
+6. Find the guest user (`Site.GuestUserId` for MasterLabel `Donate`); assign `Donation_Public_Access` and the
+   `FinDock_Payer` group (via `PermissionSetAssignment.PermissionSetGroupId`).
 7. Verify (see below). Only then report done.
 
 ## Verification that counts as "done"
