@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment received · FinDock Gibbons customer portal</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="./"><img src="logo.svg" alt="">FinDock Gibbons <small>Customer portal</small></a>
+            <nav class="nav" aria-label="Portal">
+                <a href="./">Overview</a>
+                <a href="./" aria-current="page">Invoices</a>
+                <a href="./">Account</a>
+            </nav>
+            <div class="user">
+                <div class="avatar" aria-hidden="true">JC</div>
+                <div class="who"><strong>Jane Cooper</strong><span>Example Retail B.V.</span></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="thanks">
+        <div class="check"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h1>Payment received</h1>
+        <p id="thanks-text">Thank you, Jane. Your payment has been received and is being processed. A confirmation is on its way to your inbox.</p>
+        <a class="button" href="./">Back to invoices</a>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <span>© 2026 FinDock Gibbons · A fictional company for a FinDock demo</span>
+            <span>Payments powered by FinDock</span>
+        </div>
+    </footer>
+
+    <script>
+        // Demo only: remember the payment in this browser so the portal shows the invoice as paid.
+        const ref = new URLSearchParams(window.location.search).get('ref');
+        if (ref && /^INST-\d{4,}$/.test(ref)) {
+            document.getElementById('thanks-text').textContent =
+                `Thank you, Jane. Your payment for invoice ${ref} has been received and is being processed. A confirmation is on its way to your inbox.`;
+            try {
+                const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+                localStorage.setItem(`fdg-paid-${ref}`, today);
+            } catch {
+                // Storage unavailable (private mode): the portal just keeps showing the invoice as open.
+            }
+        }
+    </script>
+</body>
+</html>

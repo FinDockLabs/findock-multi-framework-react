@@ -1,0 +1,18 @@
+/*
+ * Canopy Gibbon Trust brand tokens. Every example uses these: the plain-HTML sites link this file,
+ * the React apps import it and map the values into their Tailwind theme.
+ * A fictional charity for FinDock demos; swap these values for your own brand.
+ */
+:root {
+    --canopy-forest: #1E4634;
+    --canopy-leaf: #2E7D57;
+    --canopy-sun: #F28C38;
+    --canopy-mist: #F2F6F0;
+    --canopy-moss: #E3EFE5;
+    --canopy-dawn: #FDEBDA;
+    --canopy-body: #3F5A4C;
+    --canopy-muted: #587063;
+    --canopy-pale: #D4E7D9;
+    --canopy-display: 'Bricolage Grotesque', Figtree, 'Helvetica Neue', Arial, sans-serif;
+    --canopy-sans: Figtree, 'Helvetica Neue', Arial, sans-serif;
+}

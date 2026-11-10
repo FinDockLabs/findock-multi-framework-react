@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Invoices · FinDock Gibbons customer portal</title>
+    <meta name="description" content="Demo customer portal for the fictional FinDock Gibbons, with the FinDock checkout embedded through Lightning Out 2.0.">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="./"><img src="logo.svg" alt="">FinDock Gibbons <small>Customer portal</small></a>
+            <nav class="nav" aria-label="Portal">
+                <a href="#">Overview</a>
+                <a href="#" aria-current="page">Invoices</a>
+                <a href="#">Account</a>
+            </nav>
+            <div class="user">
+                <div class="avatar" aria-hidden="true">JC</div>
+                <div class="who"><strong>Jane Cooper</strong><span>Example Retail B.V.</span></div>
+                <button type="button" class="link-button">Sign out</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-head">
+                <div>
+                    <h1>Invoices</h1>
+                    <p>Example Retail B.V. · Customer number C-10482</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="label">Open balance</div>
+                    <div class="value" id="stat-open">€925.00</div>
+                    <div class="sub" id="stat-open-sub">2 invoices to pay</div>
+                </div>
+                <div class="stat">
+                    <div class="label">Next due date</div>
+                    <div class="value" id="stat-due">25 Nov 2026</div>
+                    <div class="sub" id="stat-due-sub">INST-00003585</div>
+                </div>
+                <div class="stat">
+                    <div class="label">Paid in 2026</div>
+                    <div class="value" id="stat-paid">€1,789.00</div>
+                    <div class="sub" id="stat-paid-sub">5 invoices</div>
+                </div>
+            </div>
+
+            <div class="notice" id="notice">
+                <p><strong id="notice-title">Invoice INST-00003585 is due on 25 Nov 2026</strong><span id="notice-sub">Payments strategy workshop, follow-up · €605.00</span></p>
+                <a class="button" id="notice-pay" href="pay.html?invoice=40feb30d-1a37-4f63-a66b-67b86c7cd77a&amp;ref=INST-00003585">Pay now</a>
+            </div>
+
+            <section class="panel" aria-labelledby="invoices-title">
+                <div class="panel-head">
+                    <h2 id="invoices-title">All invoices</h2>
+                    <div class="filters" role="group" aria-label="Filter invoices">
+                        <button type="button" aria-pressed="true" data-filter="all">All</button>
+                        <button type="button" aria-pressed="false" data-filter="open">Open</button>
+                        <button type="button" aria-pressed="false" data-filter="paid">Paid</button>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr><th>Invoice</th><th>Description</th><th>Issued</th><th>Due</th><th class="num">Amount</th><th>Status</th><th class="num"><span class="muted">Actions</span></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr data-status="open" data-ref="INST-00003585" data-amount="605.00" data-due="25 Nov 2026" data-desc="Payments strategy workshop, follow-up">
+                            <td class="invoice-no">INST-00003585</td>
+                            <td class="desc">Payments strategy workshop, follow-up</td>
+                            <td>30 Oct 2026</td>
+                            <td>25 Nov 2026</td>
+                            <td class="num">€605.00</td>
+                            <td class="status"><span class="badge open">Open</span></td>
+                            <td><div class="actions"><a href="invoices/invoice-INST-00003585.pdf" target="_blank" rel="noopener">PDF</a><a class="button" href="pay.html?invoice=40feb30d-1a37-4f63-a66b-67b86c7cd77a&amp;ref=INST-00003585">Pay now</a></div></td>
+                        </tr>
+                        <tr data-status="open" data-ref="INST-00003587" data-amount="320.00" data-due="23 Dec 2026" data-desc="Payments support retainer, November 2026">
+                            <td class="invoice-no">INST-00003587</td>
+                            <td class="desc">Payments support retainer, November 2026</td>
+                            <td>30 Oct 2026</td>
+                            <td>23 Dec 2026</td>
+                            <td class="num">€320.00</td>
+                            <td class="status"><span class="badge open">Open</span></td>
+                            <td><div class="actions"><a href="invoices/invoice-INST-00003587.pdf" target="_blank" rel="noopener">PDF</a><a class="button" href="pay.html?invoice=553f907b-f122-f6bb-3973-cad113117f80&amp;ref=INST-00003587">Pay now</a></div></td>
+                        </tr>
+                        <tr data-status="paid" data-amount="167.00">
+                            <td class="invoice-no">INST-00003584</td>
+                            <td class="desc">Consulting services, October 2026</td>
+                            <td>30 Oct 2026</td>
+                            <td>11 Nov 2026</td>
+                            <td class="num">€167.00</td>
+                            <td><span class="badge paid">Paid</span></td>
+                            <td><div class="actions"><a href="invoices/invoice-INST-00003584.pdf" target="_blank" rel="noopener">PDF</a><span class="muted">Paid online</span></div></td>
+                        </tr>
+                        <tr data-status="paid" data-amount="245.00">
+                            <td class="invoice-no">INST-00003586</td>
+                            <td class="desc">Salesforce payments health check</td>
+                            <td>30 Oct 2026</td>
+                            <td>9 Dec 2026</td>
+                            <td class="num">€245.00</td>
+                            <td><span class="badge paid">Paid 30 Oct</span></td>
+                            <td><div class="actions"><span class="muted">Paid by Credit Card</span></div></td>
+                        </tr>
+                        <tr data-status="paid" data-amount="320.00">
+                            <td class="invoice-no">INST-00003402</td>
+                            <td class="desc">Consulting services, September 2026</td>
+                            <td>30 Sep 2026</td>
+                            <td>14 Oct 2026</td>
+                            <td class="num">€320.00</td>
+                            <td><span class="badge paid">Paid 9 Oct</span></td>
+                            <td><div class="actions"><span class="muted">Paid by iDEAL | Wero</span></div></td>
+                        </tr>
+                        <tr data-status="paid" data-amount="890.00">
+                            <td class="invoice-no">INST-00003311</td>
+                            <td class="desc">Payments strategy workshop</td>
+                            <td>29 Aug 2026</td>
+                            <td>12 Sep 2026</td>
+                            <td class="num">€890.00</td>
+                            <td><span class="badge paid">Paid 5 Sep</span></td>
+                            <td><div class="actions"><span class="muted">Paid by Credit Card</span></div></td>
+                        </tr>
+                        <tr data-status="paid" data-amount="167.00">
+                            <td class="invoice-no">INST-00003207</td>
+                            <td class="desc">Consulting services, July 2026</td>
+                            <td>31 Jul 2026</td>
+                            <td>14 Aug 2026</td>
+                            <td class="num">€167.00</td>
+                            <td><span class="badge paid">Paid 12 Aug</span></td>
+                            <td><div class="actions"><span class="muted">Paid by Pay by Bank</span></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <p class="demo-note">Demo portal: sign-in is simulated and the paid invoices are sample data. The open invoices are real FinDock installments in Salesforce; paying one collects it there. <button type="button" class="link-button" id="reset-demo" hidden>Reset demo</button></p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <span>© 2026 FinDock Gibbons · A fictional company for a FinDock demo</span>
+            <span>Payments powered by FinDock</span>
+        </div>
+    </footer>
+
+    <script type="module" src="portal.js"></script>
+</body>
+</html>

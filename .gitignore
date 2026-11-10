@@ -49,3 +49,9 @@ $RECYCLE.BIN/
 
 # local e2e artefacts
 e2e-output/
+
+# JetBrains IDE files
+.idea/
+
+# TypeScript incremental build info
+*.tsbuildinfo

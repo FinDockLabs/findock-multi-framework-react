@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Donate Lightning Out</masterLabel>
+    <description>Public React donation page (Salesforce Multi-Framework) that embeds the FinDock Donation Flow with Lightning Out 2.0.</description>
+    <isActive>true</isActive>
+    <version>1</version>
+    <target>Experience</target>
+</UIBundle>

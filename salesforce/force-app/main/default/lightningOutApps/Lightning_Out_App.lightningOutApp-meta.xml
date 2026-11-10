@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningOutApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationName>Lightning Out App</applicationName>
+    <components>
+        <component>
+            <componentName>c-donation-flow</componentName>
+        </component>
+        <component>
+            <componentName>c-invoice-pay-flow</componentName>
+        </component>
+        <component>
+            <componentName>c-amount-and-frequency</componentName>
+        </component>
+        <component>
+            <componentName>c-currency-picker</componentName>
+        </component>
+        <component>
+            <componentName>c-experience-progress-stages</componentName>
+        </component>
+        <component>
+            <componentName>c-payment-amount</componentName>
+        </component>
+        <component>
+            <componentName>cpm-pay-button</componentName>
+        </component>
+        <component>
+            <componentName>cpm-payment-method-selector</componentName>
+        </component>
+    </components>
+    <isEnabled>true</isEnabled>
+    <runtime>CLWR</runtime>
+</LightningOutApp>

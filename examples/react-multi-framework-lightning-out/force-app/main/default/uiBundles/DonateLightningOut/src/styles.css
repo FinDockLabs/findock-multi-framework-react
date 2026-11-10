@@ -1,0 +1,15 @@
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/figtree';
+/* Canopy Gibbon Trust brand and page sections, shared with the other examples in this repo (/shared/canopy). */
+@import '../../../../../../../../shared/canopy/tokens.css';
+@import '../../../../../../../../shared/canopy/site.css';
+
+:root {
+  /* Self-hosted variable fonts (fontsource) instead of the Google Fonts the HTML examples load. */
+  --canopy-display: 'Bricolage Grotesque Variable', 'Figtree Variable', 'Helvetica Neue', Arial, sans-serif;
+  --canopy-sans: 'Figtree Variable', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+}
