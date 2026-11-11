@@ -1,8 +1,8 @@
 # Salesforce setup for the Lightning Out examples
 
 What the org needs so websites can embed FinDock's flows with Lightning Out 2.0. Used by
-`examples/html-lightning-out-donation`, `examples/html-lightning-out-checkout` and
-`examples/react-multi-framework-lightning-out`.
+`examples/html-lightning-out-donation`, `examples/html-lightning-out-checkout`,
+`examples/html-lightning-out-checkout-page` and `examples/react-multi-framework-lightning-out`.
 
 | Path | What it is |
 |---|---|

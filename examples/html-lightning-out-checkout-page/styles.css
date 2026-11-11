@@ -1,0 +1,299 @@
+/* Checkout page: the FinDock Gibbons look of the Experience Cloud checkout template
+   (IBM Plex Sans, navy ink, pale-blue page with two soft glows). The checkout itself is styled
+   in Salesforce by the checkoutStyles static resource. */
+:root {
+    --navy: #1B2A5B;
+    --slate: #3A4A6B;
+    --caption: #5A6680;
+    --tint: #F1F8FF;
+    --glow-1: #FF8A4C;
+    --glow-2: #8282FC;
+    --success: #1E8A55;
+    --border: rgba(27, 42, 91, 0.10);
+    --shadow: 0 4px 24px rgba(27, 42, 91, 0.08);
+    --font: "IBM Plex Sans", Inter, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font);
+    color: var(--navy);
+    background: var(--tint);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* Brand glows behind the content */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+body::before {
+    left: -220px;
+    top: 140px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--glow-1) 90%, transparent) 0%, transparent 70%);
+}
+
+body::after {
+    right: -240px;
+    bottom: -180px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--glow-2) 90%, transparent) 0%, transparent 70%);
+}
+
+a {
+    color: var(--navy);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Header */
+.site-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border);
+}
+
+.site-header .container {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.brand img {
+    width: 32px;
+    height: 32px;
+}
+
+.secure {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--slate);
+    white-space: nowrap;
+}
+
+main {
+    flex: 1;
+    padding-top: 40px;
+    padding-bottom: 56px;
+}
+
+/* Height is replaced by the checkout's own height once it reports it (findock-resize). */
+.checkout-embed {
+    position: relative;
+    height: 860px;
+    margin: 0 -16px;
+}
+
+.checkout-embed c-invoice-pay-flow {
+    display: block;
+    height: 100%;
+}
+
+/* Skeleton shown over the embed until the checkout has loaded (checkout.js) */
+.checkout-loading {
+    position: absolute;
+    inset: 16px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 40px;
+    transition: opacity 0.3s ease-out;
+}
+
+.checkout-loading.done {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-card {
+    display: grid;
+    grid-template-columns: 42fr 58fr;
+    flex: 1;
+}
+
+.loading-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-right: 48px;
+}
+
+.loading-col.right {
+    padding: 0 0 0 48px;
+    border-left: 1px solid var(--border);
+}
+
+.sk {
+    display: block;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #EEF3FA 0%, #F7FAFE 50%, #EEF3FA 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.sk-eyebrow { width: 120px; height: 12px; }
+.sk-title { width: 70%; height: 44px; }
+.sk-sub { width: 55%; height: 18px; margin-bottom: 24px; }
+.sk-line { width: 100%; height: 36px; }
+.sk-line.short { width: 60%; }
+.sk-amount { width: 160px; height: 44px; align-self: center; margin-bottom: 16px; }
+.sk-option { width: 100%; height: 56px; border-radius: 12px; }
+.sk-option.tall { height: 180px; }
+.sk-button { width: 100%; height: 48px; border-radius: 12px; margin-top: 8px; }
+
+.loading-text {
+    order: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 0 24px;
+    font-size: 14px;
+    color: var(--slate);
+}
+
+@keyframes shimmer {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sk {
+        animation: none;
+    }
+}
+
+/* Payment received page */
+.thanks {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 96px 24px;
+    text-align: center;
+}
+
+.thanks .check {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 32px;
+    border-radius: 50%;
+    background: var(--success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 24px color-mix(in srgb, var(--glow-1) 12%, transparent), 0 0 80px 40px color-mix(in srgb, var(--glow-1) 18%, transparent);
+}
+
+.thanks h1 {
+    margin: 0 0 16px;
+    font-size: 44px;
+    line-height: 1.1;
+}
+
+.thanks p {
+    margin: 0 0 16px;
+    font-size: 18px;
+    color: var(--slate);
+}
+
+.thanks p.small {
+    font-size: 15px;
+    color: var(--caption);
+}
+
+/* Footer */
+.site-footer {
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--caption);
+}
+
+.site-footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+@media (max-width: 860px) {
+    .site-header .container {
+        padding: 0 16px;
+    }
+
+    .brand {
+        font-size: 16px;
+    }
+
+    main {
+        padding-top: 24px;
+    }
+
+    .checkout-loading {
+        padding: 24px 20px;
+    }
+
+    .loading-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .loading-col,
+    .loading-col.right {
+        padding: 0;
+        border: 0;
+    }
+
+    .thanks {
+        padding: 64px 24px;
+    }
+
+    .thanks h1 {
+        font-size: 34px;
+    }
+}

@@ -10,6 +10,7 @@ you can compare the techniques side by side. A pill in each site's header says w
 |---|---|---|---|---|
 | [`examples/html-lightning-out-donation`](examples/html-lightning-out-donation) | Plain HTML, CSS, JavaScript | Salesforce Donation_Flow, embedded | Any static host (Netlify, Vercel, …) | Lightning Out 2.0 → flow → FinDock components |
 | [`examples/html-lightning-out-checkout`](examples/html-lightning-out-checkout) | Plain HTML, CSS, JavaScript | Salesforce Checkout_Flow, embedded in a customer portal | Any static host | Lightning Out 2.0 → flow → FinDock components |
+| [`examples/html-lightning-out-checkout-page`](examples/html-lightning-out-checkout-page) | Plain HTML, CSS, JavaScript | Salesforce Checkout_Flow on a page of its own (the checkout template, without a portal) | Any static host | Lightning Out 2.0 → flow → FinDock components |
 | [`examples/react-multi-framework-api`](examples/react-multi-framework-api) | React (Salesforce Multi-Framework) | Its own React form | Experience Cloud site | Apex REST → FinDock Payment API |
 | [`examples/react-multi-framework-lightning-out`](examples/react-multi-framework-lightning-out) | React (Salesforce Multi-Framework) | Salesforce Donation_Flow, embedded | Experience Cloud site | Lightning Out 2.0 → flow → FinDock components |
 
@@ -61,7 +62,7 @@ Each example's README has the full steps. In short:
 
 | Example | Where it runs | How |
 |---|---|---|
-| HTML donation, HTML checkout | Any static host | Publish the example folder as-is (no build step): [Netlify, Vercel, Cloudflare Pages, GitHub Pages](examples/html-lightning-out-donation/README.md#deploy), or your own web server. Then trust the site's domain in Salesforce |
+| HTML donation, HTML checkout, HTML checkout page | Any static host | Publish the example folder as-is (no build step): [Netlify, Vercel, Cloudflare Pages, GitHub Pages](examples/html-lightning-out-donation/README.md#deploy), or your own web server. Then trust the site's domain in Salesforce |
 | React + FinDock API | Salesforce (Experience Cloud) | `npm run build` in the app folder, then `sf project deploy start` ([steps](examples/react-multi-framework-api/README.md#deploy)) |
 | React + Lightning Out | Salesforce (Experience Cloud) | Same as above ([steps](examples/react-multi-framework-lightning-out/README.md#deploy)) |
 | Lightning Out setup | Salesforce | Once per org, for all Lightning Out examples ([salesforce/README.md](salesforce/README.md)) |
