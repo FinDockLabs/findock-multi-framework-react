@@ -3,14 +3,16 @@
 Example donation and checkout websites that take payments through [FinDock](https://www.findock.com) on Salesforce,
 for developers who build their own site instead of using an Experience Cloud template.
 
-All examples share one fictional brand, **Canopy Gibbon Trust** (and the **FinDock Gibbons** customer portal), so
-you can compare the techniques side by side. A pill in each site's header says which technique the page uses.
+The donation examples share one fictional brand, **Canopy Gibbon Trust**, so you can compare the techniques side by
+side. The checkout, pay link and customer portal use **Your company**, the neutral brand of FinDock's Experience Cloud
+checkout and Pay Link templates. A pill in each site's header says which technique the page uses.
 
 | Example | Built with | Form | Hosted on | Talks to FinDock through |
 |---|---|---|---|---|
 | [`examples/html-lightning-out-donation`](examples/html-lightning-out-donation) | Plain HTML, CSS, JavaScript | Salesforce Donation_Flow, embedded | Any static host (Netlify, Vercel, …) | Lightning Out 2.0 → flow → FinDock components |
-| [`examples/html-lightning-out-checkout`](examples/html-lightning-out-checkout) | Plain HTML, CSS, JavaScript | Salesforce Checkout_Flow, embedded in a customer portal | Any static host | Lightning Out 2.0 → flow → FinDock components |
+| [`examples/html-lightning-out-checkout`](examples/html-lightning-out-checkout) | Plain HTML, CSS, JavaScript | Salesforce Pay_Link_Flow, embedded in a customer portal with an invoice list | Any static host | Lightning Out 2.0 → flow → FinDock components |
 | [`examples/html-lightning-out-checkout-page`](examples/html-lightning-out-checkout-page) | Plain HTML, CSS, JavaScript | Salesforce Checkout_Flow on a page of its own (the checkout template, without a portal) | Any static host | Lightning Out 2.0 → flow → FinDock components |
+| [`examples/html-lightning-out-pay-link`](examples/html-lightning-out-pay-link) | Plain HTML, CSS, JavaScript | Salesforce Pay_Link_Flow: the page behind a "Pay now" link in an invoice or payment request email | Any static host | Lightning Out 2.0 → flow → FinDock components |
 | [`examples/react-multi-framework-api`](examples/react-multi-framework-api) | React (Salesforce Multi-Framework) | Its own React form | Experience Cloud site | Apex REST → FinDock Payment API |
 | [`examples/react-multi-framework-lightning-out`](examples/react-multi-framework-lightning-out) | React (Salesforce Multi-Framework) | Salesforce Donation_Flow, embedded | Experience Cloud site | Lightning Out 2.0 → flow → FinDock components |
 
@@ -23,6 +25,13 @@ you can compare the techniques side by side. A pill in each site's header says w
 
 These are reference examples, not templates to deploy as-is: replace the brand, copy and settings with your own.
 
+**Live demos** (fictional brands on a test org; no real money is taken):
+[donation page](https://canopy-gibbon-trust.netlify.app/) ·
+[checkout](https://findock-gibbons.netlify.app/checkout-page/) ·
+[pay link](https://findock-gibbons.netlify.app/pay-link/?id=553f907b-f122-f6bb-3973-cad113117f80) ·
+[customer portal](https://findock-gibbons.netlify.app/). A dark "Example" bar at the top of each switches between
+them; it comes from `shared/example-bar/example-bar.js`. Remove its `<script>` line on your own site.
+
 ## Repository layout
 
 ```
@@ -30,6 +39,7 @@ examples/        one folder per example, each with its own README and deploy ste
 shared/
   canopy/        brand tokens, page layout CSS, logo, photo and icons
   lightning-out/ lightning-out-embed.js: loads Lightning Out, sizes the frame, follows payment redirects
+  example-bar/   example-bar.js: the "Example" strip on the hosted demos, with links between the examples
   react/         React versions of the page sections and a <LightningOutEmbed> component
 salesforce/      Salesforce metadata both Lightning Out examples need (wrapper components, app, flows, styles)
 scripts/         sync-shared.mjs: copies /shared into the plain-HTML examples
@@ -62,7 +72,7 @@ Each example's README has the full steps. In short:
 
 | Example | Where it runs | How |
 |---|---|---|
-| HTML donation, HTML checkout, HTML checkout page | Any static host | Publish the example folder as-is (no build step): [Netlify, Vercel, Cloudflare Pages, GitHub Pages](examples/html-lightning-out-donation/README.md#deploy), or your own web server. Then trust the site's domain in Salesforce |
+| HTML donation, HTML checkout, HTML checkout page, HTML pay link | Any static host | Publish the example folder as-is (no build step): [Netlify, Vercel, Cloudflare Pages, GitHub Pages](examples/html-lightning-out-donation/README.md#deploy), or your own web server. Then trust the site's domain in Salesforce |
 | React + FinDock API | Salesforce (Experience Cloud) | `npm run build` in the app folder, then `sf project deploy start` ([steps](examples/react-multi-framework-api/README.md#deploy)) |
 | React + Lightning Out | Salesforce (Experience Cloud) | Same as above ([steps](examples/react-multi-framework-lightning-out/README.md#deploy)) |
 | Lightning Out setup | Salesforce | Once per org, for all Lightning Out examples ([salesforce/README.md](salesforce/README.md)) |

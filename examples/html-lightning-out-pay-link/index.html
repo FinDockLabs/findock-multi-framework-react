@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pay · Your company</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page">
+        <a class="merchant" href="./"><img src="logo.svg" alt="">Your company</a>
+
+        <div class="pay-embed">
+            <div class="pay-loading" id="pay-loading" role="status" aria-live="polite">
+                <span class="sk sk-amount"></span>
+                <span class="sk sk-sub"></span>
+                <span class="sk sk-row"></span>
+                <span class="sk sk-row"></span>
+                <span class="sk sk-row short"></span>
+                <span class="sk sk-option"></span>
+                <span class="sk sk-option"></span>
+                <span class="sk sk-button"></span>
+                <p class="loading-text" id="loading-message">Loading your payment…</p>
+            </div>
+            <!-- pay-link.js adds the Lightning Out app and c-pay-link-flow. -->
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <span>Payments powered by FinDock</span>
+        <span>© 2026 Your company · A fictional company for a FinDock demo</span>
+    </footer>
+
+    <script type="module" src="pay-link.js"></script>
+    <!-- Demo only: the "Example" bar with links to the other examples. Remove this line on your own site. -->
+    <script type="module" src="shared/example-bar.js"></script>
+</body>
+</html>

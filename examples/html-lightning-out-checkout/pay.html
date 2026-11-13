@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pay invoice · FinDock Gibbons customer portal</title>
+    <title>Pay invoice · Your company customer portal</title>
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
 <body>
     <header class="site-header">
         <div class="container">
-            <a class="brand" href="./"><img src="logo.svg" alt="">FinDock Gibbons <small>Customer portal</small></a>
+            <a class="brand" href="./"><img src="logo.svg" alt="">Your company <small>Customer portal</small></a>
             <nav class="nav" aria-label="Portal">
                 <a href="./">Overview</a>
                 <a href="./" aria-current="page">Invoices</a>
@@ -37,51 +37,39 @@
             <div class="page-head">
                 <div>
                     <h1 id="pay-title">Pay invoice</h1>
-                    <p>Secure checkout by FinDock, embedded from Salesforce</p>
+                    <p>Secure payment by FinDock, embedded from Salesforce</p>
                 </div>
                 <div class="head-actions">
-                    <a class="button secondary" id="pdf-link" href="./" target="_blank" rel="noopener" hidden>Download PDF</a>
                     <a class="button secondary" href="./">Back to invoices</a>
                 </div>
             </div>
 
-            <div class="checkout-embed">
-                <div class="checkout-loading" id="checkout-loading" role="status" aria-live="polite">
-                    <div class="loading-card" aria-hidden="true">
-                        <div class="loading-col">
-                            <span class="sk sk-eyebrow"></span>
-                            <span class="sk sk-title"></span>
-                            <span class="sk sk-sub"></span>
-                            <span class="sk sk-line"></span>
-                            <span class="sk sk-line short"></span>
-                            <span class="sk sk-line"></span>
-                            <span class="sk sk-line short"></span>
-                        </div>
-                        <div class="loading-col right">
-                            <span class="sk sk-amount"></span>
-                            <span class="sk sk-option tall"></span>
-                            <span class="sk sk-option"></span>
-                            <span class="sk sk-option"></span>
-                            <span class="sk sk-button"></span>
-                        </div>
-                    </div>
-                    <p class="loading-text">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-                        <span id="loading-message">Loading secure checkout…</span>
-                    </p>
+            <div class="pay-embed">
+                <div class="pay-loading" id="pay-loading" role="status" aria-live="polite">
+                    <span class="sk sk-amount"></span>
+                    <span class="sk sk-sub"></span>
+                    <span class="sk sk-row"></span>
+                    <span class="sk sk-row"></span>
+                    <span class="sk sk-row short"></span>
+                    <span class="sk sk-option"></span>
+                    <span class="sk sk-option"></span>
+                    <span class="sk sk-button"></span>
+                    <p class="loading-text" id="loading-message">Loading your invoice…</p>
                 </div>
-                <!-- pay.js adds the Lightning Out app and c-invoice-pay-flow for the invoice in the URL. -->
+                <!-- pay.js adds the Lightning Out app and c-pay-link-flow for the invoice in the URL. -->
             </div>
         </div>
     </main>
 
     <footer class="site-footer">
         <div class="container">
-            <span>© 2026 FinDock Gibbons · A fictional company for a FinDock demo</span>
+            <span>© 2026 Your company · A fictional company for a FinDock demo</span>
             <span>Payments powered by FinDock</span>
         </div>
     </footer>
 
     <script type="module" src="pay.js"></script>
+    <!-- Demo only: the "Example" bar with links to the other examples. Remove this line on your own site. -->
+    <script type="module" src="shared/example-bar.js"></script>
 </body>
 </html>

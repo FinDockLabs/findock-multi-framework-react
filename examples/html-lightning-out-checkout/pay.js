@@ -14,29 +14,31 @@ if (!guid || !GUID_PATTERN.test(guid) || !ref || !REF_PATTERN.test(ref)) {
     throw new Error('No valid invoice in the URL');
 }
 
-document.title = `Pay invoice ${ref} · FinDock Gibbons customer portal`;
+document.title = `Pay invoice ${ref} · Your company customer portal`;
 document.getElementById('crumb-ref').textContent = ref;
 document.getElementById('pay-title').textContent = `Pay invoice ${ref}`;
-const pdfLink = document.getElementById('pdf-link');
-pdfLink.href = `invoices/invoice-${ref}.pdf`;
-pdfLink.hidden = false;
 
-const checkoutEmbed = document.querySelector('.checkout-embed');
-const loading = document.getElementById('checkout-loading');
+const loading = document.getElementById('pay-loading');
 const loadingMessage = document.getElementById('loading-message');
 
-// The checkout is the Checkout_Flow in Salesforce, run by the c-invoice-pay-flow wrapper component
-// for the installment (invoice) in the URL. Hosted payments return to these pages.
+// The invoice card is the Pay_Link_Flow in Salesforce, run by the c-pay-link-flow wrapper component for the
+// installment (invoice) in the URL: amount, due date, a short summary, the PDF and the payment methods.
+// Hosted payments return to these pages.
 const here = new URL('.', window.location.href);
 embedLightningOut({
-    container: checkoutEmbed,
+    container: document.querySelector('.pay-embed'),
     config: LIGHTNING_OUT,
-    component: 'c-invoice-pay-flow',
+    component: 'c-pay-link-flow',
     attributes: {
-        'installment-guid': guid,
+        'record-guid': guid,
+        'link-type': 'invoice',
+        'merchant-name': 'Your company',
+        'invoice-url': new URL(`invoices/invoice-${ref}.pdf`, here).href,
         'success-url': new URL(`thank-you.html?ref=${encodeURIComponent(ref)}`, here).href,
         'failure-url': new URL(`pay.html?invoice=${encodeURIComponent(guid)}&ref=${encodeURIComponent(ref)}`, here).href,
     },
+    // A paid invoice shows a short card, so count anything from 150px as loaded.
+    loadedMinHeight: 150,
     onLoaded: hideLoading,
 });
 

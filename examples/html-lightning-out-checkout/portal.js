@@ -82,15 +82,15 @@ document.getElementById('reset-demo').addEventListener('click', () => {
     window.location.reload();
 });
 
-// Salesforce starts the checkout flow slowly when its cache is cold (after a deploy or a quiet period).
-// Start one invisible checkout for the next open invoice, so "Pay now" opens a warm one.
+// Salesforce starts the flow slowly when its cache is cold (after a deploy or a quiet period).
+// Start one invisible pay link for the next open invoice, so "Pay now" opens a warm one.
 function warmUpCheckout() {
     const next = document.querySelector('tr[data-status="open"] a.button');
     if (!next) {
         return;
     }
     const guid = new URL(next.href).searchParams.get('invoice');
-    warmUpLightningOut({ config: LIGHTNING_OUT, component: 'c-invoice-pay-flow', attributes: { 'installment-guid': guid } });
+    warmUpLightningOut({ config: LIGHTNING_OUT, component: 'c-pay-link-flow', attributes: { 'record-guid': guid } });
 }
 
 markPaidRows();

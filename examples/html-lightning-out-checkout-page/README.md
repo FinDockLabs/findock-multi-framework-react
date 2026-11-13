@@ -7,14 +7,15 @@ checkout and a footer, nothing else.
 Use it for a "Pay now" link in an invoice email, a payment reminder or a QR code on a paper invoice. For a checkout
 inside a customer portal with an invoice list, see [html-lightning-out-checkout](../html-lightning-out-checkout).
 
-Fictional company: **FinDock Gibbons**.
+Fictional company: **Your company**, the neutral brand of the Experience Cloud checkout and Pay Link templates.
 
 | File | What it is |
 |---|---|
 | `index.html`, `checkout.js` | The checkout page. Embeds `c-invoice-pay-flow`, shows a loading skeleton until it's ready |
 | `payment-received.html` | Return page after a successful payment |
 | `config.js` | Your org's Lightning Out settings |
-| `styles.css` | The page's look (header, background glows, footer, skeleton) |
+| `styles.css` | The page's look (header, footer, skeleton) |
+| `shared/example-bar.js` | The demo's "Example" bar. Remove its `<script>` line from the HTML on your own site |
 | `shared/lightning-out-embed.js` | Copy of `/shared/lightning-out/lightning-out-embed.js` (run `npm run sync-shared` in the repo root after editing the original) |
 
 ## What it pays
@@ -66,8 +67,8 @@ Then trust the site's address in Salesforce, exactly as for the donation example
 
 ## Styling
 
-- The page: `styles.css`. Brand colours are the variables at the top: `--navy` for text, `--tint` for the page
-  background, `--glow-1` and `--glow-2` for the two background glows.
+- The page: `styles.css`. Brand colours are the variables at the top: `--ink` for text, `--navy` for buttons and the
+  logo, `--border` for lines.
 - The checkout inside the frame: styled in Salesforce by the `checkoutStyles` static resource that the Lightning Out
   site loads. Lightning Out doesn't pass your page's CSS into the frame. See
   [Payment Experiences styling](https://docs.findock.com/docs/november-26/payments/payment-experiences-styling).

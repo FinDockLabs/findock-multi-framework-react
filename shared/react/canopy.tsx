@@ -181,7 +181,7 @@ export function SiteFooter({ surfaceNote, supportEmail = 'hello@canopygibbons.ex
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <span>© 2026 {ORGANISATION_NAME} · A fictional charity for a FinDock demo. Please don't donate real money.</span>
+                    <span>© 2026 {ORGANISATION_NAME} · A fictional charity for a FinDock demo. All donations are tests: no real money is taken.</span>
                     <span>Donation form: {surfaceNote} · processed by FinDock</span>
                 </div>
             </div>

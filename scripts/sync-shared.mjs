@@ -10,7 +10,12 @@ const copies = [
     ['shared/lightning-out/lightning-out-embed.js', 'examples/html-lightning-out-donation/shared/lightning-out-embed.js'],
     ['shared/lightning-out/lightning-out-embed.js', 'examples/html-lightning-out-checkout/shared/lightning-out-embed.js'],
     ['shared/lightning-out/lightning-out-embed.js', 'examples/html-lightning-out-checkout-page/shared/lightning-out-embed.js'],
+    ['shared/lightning-out/lightning-out-embed.js', 'examples/html-lightning-out-pay-link/shared/lightning-out-embed.js'],
     ['shared/canopy', 'examples/html-lightning-out-donation/shared/canopy'],
+    ['shared/example-bar/example-bar.js', 'examples/html-lightning-out-donation/shared/example-bar.js'],
+    ['shared/example-bar/example-bar.js', 'examples/html-lightning-out-checkout/shared/example-bar.js'],
+    ['shared/example-bar/example-bar.js', 'examples/html-lightning-out-checkout-page/shared/example-bar.js'],
+    ['shared/example-bar/example-bar.js', 'examples/html-lightning-out-pay-link/shared/example-bar.js'],
 ];
 
 function files(path) {

@@ -1,20 +1,21 @@
-# Invoice checkout: plain HTML + Lightning Out
+# Customer portal: plain HTML + Lightning Out
 
 A customer portal in plain HTML, CSS and JavaScript where customers see their invoices and pay one, with FinDock's
-Salesforce **Checkout_Flow** embedded through **Lightning Out 2.0**. Each invoice is a FinDock installment; the
-portal passes its GUID to the flow.
+Salesforce **Pay_Link_Flow** embedded through **Lightning Out 2.0**: the same invoice card as the Pay Link template.
+Each invoice is a FinDock installment; the portal passes its GUID to the flow.
 
-Fictional company: **FinDock Gibbons**.
+Fictional company: **Your company**, the neutral brand of the Experience Cloud checkout and Pay Link templates.
 
 | File | What it is |
 |---|---|
-| `index.html`, `portal.js` | Invoice list with status, totals and "Pay now" buttons. Warms up the checkout in the background (Salesforce starts a flow slowly when its cache is cold) |
-| `pay.html`, `pay.js` | Pay page: invoice details and the embedded checkout for `?invoice=<installment GUID>&ref=<INST-number>` |
+| `index.html`, `portal.js` | Invoice list with status, totals and "Pay now" buttons. Warms up the pay link in the background (Salesforce starts a flow slowly when its cache is cold) |
+| `pay.html`, `pay.js` | Pay page: the invoice card (`c-pay-link-flow`) for `?invoice=<installment GUID>&ref=<INST-number>`, with the invoice PDF as a thumbnail |
 | `thank-you.html` | Return page after payment; marks the invoice as paid in this browser (demo only) |
 | `config.js` | Your org's Lightning Out settings |
-| `invoices/` | Sample invoice PDFs |
+| `invoices/` | Sample invoice PDFs. Their QR code opens the [Pay Link example](../html-lightning-out-pay-link) |
 | `shared/lightning-out-embed.js` | Copy of `/shared/lightning-out/lightning-out-embed.js` (run `npm run sync-shared` in the repo root after editing the original) |
-| `styles.css` | The portal's own look (navy FinDock style; this example doesn't use the Canopy brand) |
+| `styles.css` | The portal's own look, in the neutral brand of the templates |
+| `shared/example-bar.js` | The demo's "Example" bar. Remove its `<script>` line from the HTML on your own site |
 
 The invoice rows in `index.html` are sample data with installment GUIDs from the demo org. Replace them with your own
 installments, or load them from your backend.
@@ -22,7 +23,7 @@ installments, or load them from your backend.
 ## Prerequisites
 
 The Salesforce side, once per org: see [salesforce/README.md](../../salesforce/README.md). You need a Lightning Out
-site, the Lightning Out app with `c-invoice-pay-flow`, and the Checkout_Flow.
+site, the Lightning Out app with `c-pay-link-flow`, and the Pay Link Flow.
 
 ## Configure
 
@@ -58,5 +59,5 @@ Then trust the site's address in Salesforce, exactly as for the donation example
 
 ## Styling
 
-The portal uses `styles.css`. The checkout inside the frame is styled in Salesforce by the `checkoutStyles` static
-resource that the Lightning Out site loads.
+The portal uses `styles.css`. The invoice card inside the frame is styled in Salesforce by the `payLinkStyles` static
+resource, which `c-pay-link-flow` loads itself.

@@ -7,6 +7,7 @@
     "check-shared": "node scripts/sync-shared.mjs --check",
     "serve:html-donation": "npx -y serve examples/html-lightning-out-donation",
     "serve:html-checkout": "npx -y serve examples/html-lightning-out-checkout",
-    "serve:html-checkout-page": "npx -y serve examples/html-lightning-out-checkout-page"
+    "serve:html-checkout-page": "npx -y serve examples/html-lightning-out-checkout-page",
+    "serve:html-pay-link": "npx -y serve examples/html-lightning-out-pay-link"
   }
 }

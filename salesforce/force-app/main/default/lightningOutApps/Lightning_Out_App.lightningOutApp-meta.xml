@@ -18,6 +18,9 @@
             <componentName>c-experience-progress-stages</componentName>
         </component>
         <component>
+            <componentName>c-pay-link-flow</componentName>
+        </component>
+        <component>
             <componentName>c-payment-amount</componentName>
         </component>
         <component>

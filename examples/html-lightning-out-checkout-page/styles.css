@@ -1,16 +1,15 @@
-/* Checkout page: the FinDock Gibbons look of the Experience Cloud checkout template
-   (IBM Plex Sans, navy ink, pale-blue page with two soft glows). The checkout itself is styled
-   in Salesforce by the checkoutStyles static resource. */
+/* Checkout page: the neutral look of the Experience Cloud checkout template (IBM Plex Sans, a white page,
+   a plain header and footer). The checkout itself, payment on the left and the order summary on the right,
+   is styled in Salesforce by the checkoutStyles static resource. */
 :root {
     --navy: #1B2A5B;
-    --slate: #3A4A6B;
-    --caption: #5A6680;
-    --tint: #F1F8FF;
-    --glow-1: #FF8A4C;
-    --glow-2: #8282FC;
+    --slate: #5B6270;
+    --ink: #1A1D24;
+    --caption: #5B6270;
+    --tint: #F5F6F8;
     --success: #1E8A55;
-    --border: rgba(27, 42, 91, 0.10);
-    --shadow: 0 4px 24px rgba(27, 42, 91, 0.08);
+    --border: #E3E6EA;
+    --shadow: 0 1px 3px rgba(26, 29, 36, 0.08);
     --font: "IBM Plex Sans", Inter, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -32,36 +31,10 @@ body {
     display: flex;
     flex-direction: column;
     font-family: var(--font);
-    color: var(--navy);
-    background: var(--tint);
+    color: var(--ink);
+    background: #FFFFFF;
     line-height: 1.5;
     overflow-x: hidden;
-}
-
-/* Brand glows behind the content */
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    z-index: -1;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    filter: blur(40px);
-    opacity: 0.35;
-    pointer-events: none;
-}
-
-body::before {
-    left: -220px;
-    top: 140px;
-    background: radial-gradient(circle, color-mix(in srgb, var(--glow-1) 90%, transparent) 0%, transparent 70%);
-}
-
-body::after {
-    right: -240px;
-    bottom: -180px;
-    background: radial-gradient(circle, color-mix(in srgb, var(--glow-2) 90%, transparent) 0%, transparent 70%);
 }
 
 a {
@@ -140,8 +113,6 @@ main {
     display: flex;
     flex-direction: column;
     background: #FFFFFF;
-    border-radius: 24px;
-    box-shadow: var(--shadow);
     padding: 40px;
     transition: opacity 0.3s ease-out;
 }
@@ -172,7 +143,7 @@ main {
 .sk {
     display: block;
     border-radius: 8px;
-    background: linear-gradient(90deg, #EEF3FA 0%, #F7FAFE 50%, #EEF3FA 100%);
+    background: linear-gradient(90deg, #EEF0F3 0%, #F7F8FA 50%, #EEF0F3 100%);
     background-size: 200% 100%;
     animation: shimmer 1.4s ease-in-out infinite;
 }
@@ -226,7 +197,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 0 24px color-mix(in srgb, var(--glow-1) 12%, transparent), 0 0 80px 40px color-mix(in srgb, var(--glow-1) 18%, transparent);
+    box-shadow: none;
 }
 
 .thanks h1 {
