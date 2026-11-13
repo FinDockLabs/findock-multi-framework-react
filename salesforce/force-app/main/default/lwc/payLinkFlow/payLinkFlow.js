@@ -22,6 +22,9 @@ export default class PayLinkFlow extends LightningElement {
     resizeObserver;
     lastHeight = 0;
     stylesLoaded = false;
+    // Heights are only reported once the flow shows its first screen. Before that the frame holds only the
+    // flow's loading spinner, and reporting its height would make the host page drop its skeleton too early.
+    screenShown = false;
 
     get inputVariables() {
         const values = {
@@ -48,6 +51,13 @@ export default class PayLinkFlow extends LightningElement {
         }
     }
 
+    handleStatusChange() {
+        if (!this.screenShown) {
+            this.screenShown = true;
+            this.postHeight();
+        }
+    }
+
     renderedCallback() {
         if (this.resizeObserver || window.parent === window) {
             return;
@@ -65,6 +75,9 @@ export default class PayLinkFlow extends LightningElement {
     }
 
     postHeight() {
+        if (!this.screenShown || window.parent === window) {
+            return;
+        }
         const height = Math.ceil(this.refs.root.getBoundingClientRect().height);
         if (height && height !== this.lastHeight) {
             this.lastHeight = height;
